@@ -26,7 +26,7 @@ It supports the following important features:
   * Collectors can mint easily via the trusted Quix website
 
 * Public API
-	* Developers can fetch various kinds of data from the backend. See more [here](https://quixotic.readme.io/reference/api-overview)
+	* Developers can fetch various kinds of data from the backend.
 
 * NFT Bridge Frontend
 	* Holders of ETH NFTs can bridge them to Optimism (and bridge them back)
@@ -34,8 +34,7 @@ It supports the following important features:
 	* Note that the NFT bridge smart contracts are maintained by Optimism.
 
 ## Implementation
-
-Quix has a Next.js / React [frontend](https://github.com/quixotic-dev/frontend) deployed on Vercel and a Django backend deployed on Heroku. We make extensive use of
+We make extensive use of
 the [Django REST framework](https://www.django-rest-framework.org/) and the Django ORM. The backend has the following 
 pieces of infrastructure:
 
@@ -60,7 +59,6 @@ the app. In our setup, we're running the following versions of the app:
 * **quix-opt-goerli** - The Django backend servicing web request for the testnet version of our site -
 [testnet.qx.app](https://testnet.qx.app). This is important for NFT creators, but it's 
 infrastructure is more lightweight than the main backend.
-* **quix-mainnet-api** - The Django backend servicing requests for our [API](https://quixotic.readme.io/reference/api-overview).
 This is used by partners to get NFT data, collection stats, and sales data. 
 
 It's also recommended to run a development version of the above apps.

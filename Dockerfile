@@ -32,4 +32,4 @@ HEALTHCHECK --interval=10s --timeout=3s \
 
 EXPOSE 8000
 
-CMD ddtrace-run gunicorn --bind 0.0.0.0:8000 quixotic_backend.wsgi
+CMD ddtrace-run gunicorn --bind 0.0.0.0:8000 hyperdrive_backend.wsgi

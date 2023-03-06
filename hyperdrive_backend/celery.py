@@ -5,9 +5,9 @@ import pathlib
 from celery import Celery
 from kombu import Queue
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quixotic_backend.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hyperdrive_backend.settings')
 
-app = Celery('quixotic_backend')
+app = Celery('hyperdrive_backend')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.conf.result_expires = (60 * 60 * 8)  # Expire tasks after 8 hours; Default is 24 hours
 

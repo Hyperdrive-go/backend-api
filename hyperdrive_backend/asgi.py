@@ -1,5 +1,5 @@
 """
-ASGI config for quixotic_backend project.
+ASGI config for hyperdrive_backend project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quixotic_backend.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hyperdrive_backend.settings')
 
 application = get_asgi_application()

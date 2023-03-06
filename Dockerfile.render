@@ -27,4 +27,4 @@ COPY . /app
 # RUN chmod +x release.sh
 RUN python manage.py collectstatic --no-input
 
-CMD gunicorn quixotic_backend.wsgi
+CMD gunicorn hyperdrive_backend.wsgi
