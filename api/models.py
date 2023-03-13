@@ -57,10 +57,10 @@ class Profile(models.Model):
     username = models.TextField(db_index=True, unique=True, null=True, blank=True)
 
     profile_image = models.ImageField(
-        upload_to="quixotic-user-profile/", max_length=512, null=True, blank=True
+        upload_to="hyperdrive-user-profile/", max_length=512, null=True, blank=True
     )
     cover_image = models.ImageField(
-        upload_to="quixotic-user-cover/", max_length=512, null=True, blank=True
+        upload_to="hyperdrive-user-cover/", max_length=512, null=True, blank=True
     )
     bio = models.TextField(blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
@@ -601,7 +601,7 @@ class Erc721Collection(models.Model):
 
     # Collection settings
     profile_image = models.ImageField(
-        upload_to="quixotic-collection-profile/",
+        upload_to="hyperdrive-collection-profile/",
         max_length=10000,
         null=True,
         blank=True,
@@ -609,10 +609,10 @@ class Erc721Collection(models.Model):
     profile_image_url = models.URLField(null=True, blank=True, max_length=750)
     profile_image_hash = models.CharField(null=True, blank=True, max_length=750)
     cover_image = models.ImageField(
-        upload_to="quixotic-collection-cover/", max_length=512, null=True, blank=True
+        upload_to="hyperdrive-collection-cover/", max_length=512, null=True, blank=True
     )
     seo_image = models.ImageField(
-        upload_to="quixotic-collection-seo-image/",
+        upload_to="hyperdrive-collection-seo-image/",
         max_length=10000,
         null=True,
         blank=True,
@@ -2330,14 +2330,14 @@ class HostedMetadata(models.Model):
     token_id = models.PositiveIntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     animation_url = models.FileField(
-        upload_to="quixotic-hosted-collections/animation",
+        upload_to="hyperdrive-hosted-collections/animation",
         editable=True,
         blank=True,
         null=False,
         default=None,
     )
     image = models.ImageField(
-        upload_to="quixotic-hosted-collections/image",
+        upload_to="hyperdrive-hosted-collections/image",
         editable=True,
         null=True,
         blank=True,

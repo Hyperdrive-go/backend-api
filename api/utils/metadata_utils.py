@@ -49,7 +49,7 @@ def pull_collection_metadata(collection):
     if metadata_uri.startswith(ipfs_prefix):
         try:
             r = requests.get(
-                f"https://quixotic.mypinata.cloud/ipfs/{metadata_uri[len(ipfs_prefix):]}"
+                f"https://hyperdrive.infura-ipfs.io/ipfs/{metadata_uri[len(ipfs_prefix):]}"
             )
             metadata_str = r.text
             metadata = json.loads(metadata_str)
@@ -112,7 +112,7 @@ def pull_contract_image(collection, image_url, should_save=True):
         else:
             if image_url.startswith("ipfs://"):
                 image_url = (
-                    f"https://quixotic.infura-ipfs.io/ipfs/{image_url[len('ipfs://'):]}"
+                    f"https://hyperdrive.infura-ipfs.io/ipfs/{image_url[len('ipfs://'):]}"
                 )
 
             try:
@@ -304,14 +304,10 @@ def pull_token_metadata(token):
     ipfs_prefix = "ipfs://"
     if metadata_uri.startswith(ipfs_prefix):
         try:
-            if token.smart_contract.network.network_id != NETWORK:
-                r = requests.get(
-                    f"https://quixotic.infura-ipfs.io/ipfs/{metadata_uri[len(ipfs_prefix):]}"
-                )
-            else:
-                r = requests.get(
-                    f"https://quixotic.mypinata.cloud/ipfs/{metadata_uri[len(ipfs_prefix):]}"
-                )
+            print(metadata_uri)
+            r = requests.get(
+                f"https://hyperdrive.infura-ipfs.io/ipfs/{metadata_uri[len(ipfs_prefix):]}", timeout=1
+            )
             metadata = json.loads(r.text, strict=False)
         except Exception as e:
             print(e)
@@ -327,15 +323,15 @@ def pull_token_metadata(token):
         try:
             if metadata_uri.startswith("https://gateway.pinata.cloud/"):
                 metadata_uri = metadata_uri.replace(
-                    "https://gateway.pinata.cloud/", "https://quixotic.infura-ipfs.io/"
+                    "https://gateway.pinata.cloud/", "https://hyperdrive.infura-ipfs.io/"
                 )
             elif metadata_uri.startswith("https://ipfs.infura.io/"):
                 metadata_uri = metadata_uri.replace(
-                    "https://ipfs.infura.io/", "https://quixotic.infura-ipfs.io/"
+                    "https://ipfs.infura.io/", "https://hyperdrive.infura-ipfs.io/"
                 )
             elif metadata_uri.startswith("https://ipfs.io/"):
                 metadata_uri = metadata_uri.replace(
-                    "https://ipfs.io/", "https://quixotic.infura-ipfs.io/"
+                    "https://ipfs.io/", "https://hyperdrive.infura-ipfs.io/"
                 )
             r = requests.get(metadata_uri)
             metadata = json.loads(r.text, strict=False)
@@ -402,20 +398,20 @@ def refresh_token_metadata(token, should_save=True):
         ):
             if image_url.startswith("ipfs://"):
                 image_url = (
-                    "https://quixotic.infura-ipfs.io/ipfs/"
+                    "https://hyperdrive.infura-ipfs.io/ipfs/"
                     + image_url[len("ipfs://") :]
                 )
             elif image_url.startswith("https://gateway.pinata.cloud/"):
                 image_url = image_url.replace(
-                    "https://gateway.pinata.cloud/", "https://quixotic.infura-ipfs.io/"
+                    "https://gateway.pinata.cloud/", "https://hyperdrive.infura-ipfs.io/"
                 )
             elif image_url.startswith("https://ipfs.infura.io/"):
                 image_url = image_url.replace(
-                    "https://ipfs.infura.io/", "https://quixotic.infura-ipfs.io/"
+                    "https://ipfs.infura.io/", "https://hyperdrive.infura-ipfs.io/"
                 )
             elif image_url.startswith("https://ipfs.io/"):
                 image_url = image_url.replace(
-                    "https://ipfs.io/", "https://quixotic.infura-ipfs.io/"
+                    "https://ipfs.io/", "https://hyperdrive.infura-ipfs.io/"
                 )
 
             image_url_hash = hashlib.md5(image_url.encode("utf-8")).hexdigest()
@@ -440,20 +436,20 @@ def refresh_token_metadata(token, should_save=True):
         ):
             if animation_url.startswith("ipfs://"):
                 animation_url = (
-                    "https://quixotic.infura-ipfs.io/ipfs/"
+                    "https://hyperdrive.infura-ipfs.io/ipfs/"
                     + animation_url[len("ipfs://") :]
                 )
             elif animation_url.startswith("https://gateway.pinata.cloud/"):
                 animation_url = animation_url.replace(
-                    "https://gateway.pinata.cloud/", "https://quixotic.infura-ipfs.io/"
+                    "https://gateway.pinata.cloud/", "https://hyperdrive.infura-ipfs.io/"
                 )
             elif animation_url.startswith("https://ipfs.infura.io/"):
                 animation_url = animation_url.replace(
-                    "https://ipfs.infura.io/", "https://quixotic.infura-ipfs.io/"
+                    "https://ipfs.infura.io/", "https://hyperdrive.infura-ipfs.io/"
                 )
             elif animation_url.startswith("https://ipfs.io/"):
                 animation_url = animation_url.replace(
-                    "https://ipfs.io/", "https://quixotic.infura-ipfs.io/"
+                    "https://ipfs.io/", "https://hyperdrive.infura-ipfs.io/"
                 )
 
             animation_url_hash = hashlib.md5(animation_url.encode("utf-8")).hexdigest()
@@ -552,19 +548,19 @@ def pull_token_media(token, metadata=None, use_existing=False, override_cooldown
     ):
         if image_url.startswith("ipfs://"):
             image_url = (
-                "https://quixotic.infura-ipfs.io/ipfs/" + image_url[len("ipfs://") :]
+                "https://hyperdrive.infura-ipfs.io/ipfs/" + image_url[len("ipfs://") :]
             )
         elif image_url.startswith("https://gateway.pinata.cloud/"):
             image_url = image_url.replace(
-                "https://gateway.pinata.cloud/", "https://quixotic.infura-ipfs.io/"
+                "https://gateway.pinata.cloud/", "https://hyperdrive.infura-ipfs.io/"
             )
         elif image_url.startswith("https://ipfs.infura.io/"):
             image_url = image_url.replace(
-                "https://ipfs.infura.io/", "https://quixotic.infura-ipfs.io/"
+                "https://ipfs.infura.io/", "https://hyperdrive.infura-ipfs.io/"
             )
         elif image_url.startswith("https://ipfs.io/"):
             image_url = image_url.replace(
-                "https://ipfs.io/", "https://quixotic.infura-ipfs.io/"
+                "https://ipfs.io/", "https://hyperdrive.infura-ipfs.io/"
             )
 
         image_url_hash = hashlib.md5(image_url.encode("utf-8")).hexdigest()
@@ -649,20 +645,20 @@ def pull_token_media(token, metadata=None, use_existing=False, override_cooldown
     ):
         if animation_url.startswith("ipfs://"):
             animation_url = (
-                "https://quixotic.infura-ipfs.io/ipfs/"
+                "https://hyperdrive.infura-ipfs.io/ipfs/"
                 + animation_url[len("ipfs://") :]
             )
         elif animation_url.startswith("https://gateway.pinata.cloud/"):
             animation_url = animation_url.replace(
-                "https://gateway.pinata.cloud/", "https://quixotic.infura-ipfs.io/"
+                "https://gateway.pinata.cloud/", "https://hyperdrive.infura-ipfs.io/"
             )
         elif animation_url.startswith("https://ipfs.infura.io/"):
             animation_url = animation_url.replace(
-                "https://ipfs.infura.io/", "https://quixotic.infura-ipfs.io/"
+                "https://ipfs.infura.io/", "https://hyperdrive.infura-ipfs.io/"
             )
         elif animation_url.startswith("https://ipfs.io/"):
             animation_url = animation_url.replace(
-                "https://ipfs.io/", "https://quixotic.infura-ipfs.io/"
+                "https://ipfs.io/", "https://hyperdrive.infura-ipfs.io/"
             )
 
         animation_url_hash = hashlib.md5(animation_url.encode("utf-8")).hexdigest()
@@ -677,7 +673,7 @@ def pull_token_media(token, metadata=None, use_existing=False, override_cooldown
         if animation_url.startswith("ipfs://"):
             try:
                 r = requests.get(
-                    f"https://quixotic.infura-ipfs.io/ipfs/{animation_url[len('ipfs://'):]}"
+                    f"https://hyperdrive.infura-ipfs.io/ipfs/{animation_url[len('ipfs://'):]}"
                 )
             except Exception:
                 print(f"Invalid URL: {animation_url}")

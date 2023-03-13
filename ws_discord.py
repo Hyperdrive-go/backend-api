@@ -52,7 +52,7 @@ def pull_metadata(contract, token_id):
     if metadata_uri.startswith(ipfs_prefix):
         try:
             r = requests.get(
-                f"https://quixotic.infura-ipfs.io/ipfs/{metadata_uri[len(ipfs_prefix):]}"
+                f"https://hyperdrive.infura-ipfs.io/ipfs/{metadata_uri[len(ipfs_prefix):]}"
             )
             metadata_str = r.text
             metadata = json.loads(metadata_str)

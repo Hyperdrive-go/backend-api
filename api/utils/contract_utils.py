@@ -55,7 +55,7 @@ def get_or_create_contract(
                 smart_contract.refresh_contract()
                 collection.refresh_collection()
                 collection.refresh_metadata()
-                send_email_about_contract(collection)
+                # send_email_about_contract(collection)
                 return smart_contract
             elif contract.supports_1155_interface():
                 smart_contract = Contract.objects.create(
@@ -76,7 +76,7 @@ def get_or_create_contract(
                 smart_contract.refresh_contract()
                 collection.refresh_collection()
                 collection.refresh_metadata()
-                send_email_about_contract(collection)
+                # send_email_about_contract(collection)
                 return smart_contract
             else:
                 if save_non_nft_contract:

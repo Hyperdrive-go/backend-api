@@ -59,14 +59,14 @@ class HostedMetadata(models.Model):
     token_id = models.PositiveIntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     animation_url = models.FileField(
-        upload_to="quixotic-hosted-collections/animation",
+        upload_to="hyperdrive-hosted-collections/animation",
         editable=True,
         blank=True,
         null=False,
         default=None,
     )
     image = models.ImageField(
-        upload_to="quixotic-hosted-collections/image",
+        upload_to="hyperdrive-hosted-collections/image",
         editable=True,
         null=True,
         blank=True,

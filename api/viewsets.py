@@ -2281,7 +2281,7 @@ class TokenMetadataViewset(viewsets.GenericViewSet):
                         )
                     elif token_metadata_uri.startswith("ipfs://"):
                         token_metadata_uri = token_metadata_uri.replace(
-                            "ipfs://", "https://quixotic.infura-ipfs.io/ipfs/"
+                            "ipfs://", "https://hyperdrive.infura-ipfs.io/ipfs/"
                         )
                         r = requests.get(token_metadata_uri)
                         token_metadata = json.loads(r.text, strict=False)
@@ -2304,23 +2304,23 @@ class TokenMetadataViewset(viewsets.GenericViewSet):
                     token_image = token_metadata.get("image")
                     if token_image.startswith("ipfs://"):
                         token_image = (
-                            "https://quixotic.infura-ipfs.io/ipfs/"
+                            "https://hyperdrive.infura-ipfs.io/ipfs/"
                             + token_image[len("ipfs://") :]
                         )
                     elif token_image.startswith("https://gateway.pinata.cloud/"):
                         token_image = token_image.replace(
                             "https://gateway.pinata.cloud/",
-                            "https://quixotic.infura-ipfs.io/",
+                            "https://hyperdrive.infura-ipfs.io/",
                         )
                     elif token_image.startswith("https://ipfs.infura.io/"):
                         token_image = token_image.replace(
                             "https://ipfs.infura.io/",
-                            "https://quixotic.infura-ipfs.io/",
+                            "https://hyperdrive.infura-ipfs.io/",
                         )
                     elif token_image.startswith("https://ipfs.io/"):
                         token_image = token_image.replace(
                             "https://ipfs.io/",
-                            "https://quixotic.infura-ipfs.io/",
+                            "https://hyperdrive.infura-ipfs.io/",
                         )
                 else:
                     token_image = None
@@ -2329,23 +2329,23 @@ class TokenMetadataViewset(viewsets.GenericViewSet):
                     animation_url = token_metadata.get("animation_url")
                     if animation_url.startswith("ipfs://"):
                         animation_url = (
-                            "https://quixotic.infura-ipfs.io/ipfs/"
+                            "https://hyperdrive.infura-ipfs.io/ipfs/"
                             + animation_url[len("ipfs://") :]
                         )
                     elif animation_url.startswith("https://gateway.pinata.cloud/"):
                         animation_url = animation_url.replace(
                             "https://gateway.pinata.cloud/",
-                            "https://quixotic.infura-ipfs.io/",
+                            "https://hyperdrive.infura-ipfs.io/",
                         )
                     elif token_image.startswith("https://ipfs.infura.io/"):
                         token_image = token_image.replace(
                             "https://ipfs.infura.io/",
-                            "https://quixotic.infura-ipfs.io/",
+                            "https://hyperdrive.infura-ipfs.io/",
                         )
                     elif token_image.startswith("https://ipfs.io/"):
                         token_image = token_image.replace(
                             "https://ipfs.io/",
-                            "https://quixotic.infura-ipfs.io/",
+                            "https://hyperdrive.infura-ipfs.io/",
                         )
 
                     response = requests.head(animation_url)

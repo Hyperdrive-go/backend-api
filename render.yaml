@@ -2,43 +2,43 @@
 
 services:
   - type: worker
-    name: quixotic-websocket-tokens
+    name: hyperdrive-websocket-tokens
     env: docker
     dockerfilePath: Dockerfile.render
     dockerCommand: python ws_tokens.py
     plan: pro max
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: worker
-    name: quixotic-websocket-tokens-all
+    name: hyperdrive-websocket-tokens-all
     env: docker
     dockerfilePath: Dockerfile.render
     dockerCommand: python ws_tokens_all.py
     plan: pro max
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: worker
-    name: quixotic-websocket-tokens-l1
+    name: hyperdrive-websocket-tokens-l1
     env: docker
     dockerfilePath: Dockerfile.render
     dockerCommand: python ws_tokens_l1.py
     plan: pro max
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: worker
-    name: quixotic-websocket-collections
+    name: hyperdrive-websocket-collections
     env: docker
     dockerfilePath: Dockerfile.render
     dockerCommand: python ws_collections.py
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-pull-new-collections
+    name: hyperdrive-pull-new-collections
     schedule: "*/10 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -46,9 +46,9 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-pull-new-transfers
+    name: hyperdrive-pull-new-transfers
     schedule: "*/3 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -56,9 +56,9 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-pull-new-transfers-erc721
+    name: hyperdrive-pull-new-transfers-erc721
     schedule: "*/3 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -66,9 +66,9 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-pull-new-transfers-erc1155
+    name: hyperdrive-pull-new-transfers-erc1155
     schedule: "*/3 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -76,9 +76,9 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-pull-new-tokens
+    name: hyperdrive-pull-new-tokens
     schedule: "*/15 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -86,9 +86,9 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-pull-media
+    name: hyperdrive-pull-media
     schedule: "*/15 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -96,9 +96,9 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-refresh-orders-short
+    name: hyperdrive-refresh-orders-short
     schedule: "*/5 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -106,9 +106,9 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet
   - type: cron
-    name: quixotic-refresh-collections
+    name: hyperdrive-refresh-collections
     schedule: "0 * * * *"
     env: docker
     dockerfilePath: Dockerfile.render
@@ -116,4 +116,4 @@ services:
     plan: standard
     branch: main
     envVars:
-      - fromGroup: quixotic-mainnet
+      - fromGroup: hyperdrive-mainnet

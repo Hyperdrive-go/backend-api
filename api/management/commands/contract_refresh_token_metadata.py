@@ -10,6 +10,7 @@ class Command(BaseCommand):
         parser.add_argument("address", nargs=1, type=str)
 
     def handle(self, address, *args, **kwargs):
+        print(address[0])
         smart_contract = Contract.objects.get(address=address[0])
         tokens = Erc721Token.objects.filter(smart_contract=smart_contract)
         print(f"Refreshing metadata for {len(tokens)} tokens in {smart_contract}")
