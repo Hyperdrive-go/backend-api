@@ -23,6 +23,8 @@ def get_or_create_contract(
 
     try:
         smart_contract = Contract.objects.get(address=address, network=network)
+        if not smart_contract.collection:
+            raise Contract.DoesNotExist
         if smart_contract.collection.approved or not approved_only:
             return smart_contract
         else:
@@ -30,18 +32,21 @@ def get_or_create_contract(
     except Contract.DoesNotExist as e:
         print(e)
         try:
+            if not smart_contract.collection:
+                raise NonNFTContract.DoesNotExist
             NonNFTContract.objects.get(address=address, network=network)
             return None
         except NonNFTContract.DoesNotExist as e:
             print(e)
             try:
                 contract = Erc165Contract(address, network_id=network.network_id)
+                print(contract)
             except Exception as e:
                 print(e)
                 return None
 
             if contract.supports_721_interface():
-                smart_contract = Contract.objects.create(
+                smart_contract = Contract.objects.get(
                     address=address, approved=True, network=network
                 )
                 collection = Erc721Collection.objects.create(
